@@ -1,7 +1,7 @@
-# Skeleton App
-App description
+# Multi App
+A YouTube downloader, frequency analyzer... made with Python3.9 and TKinter
 
-Author: Your name here
+Author: Joel Glez Rod
 
 ## Notes
 Notes here.
