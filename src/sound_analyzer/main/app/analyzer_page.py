@@ -8,19 +8,20 @@ root.title('Multi App')
 root.geometry('500x500')
 
 
-def open_files(selection: str):
+def get_filepath(selection: str):
     if selection == "dir":
         root.filename = filedialog.askdirectory(title="select songs directory")
     if selection == "file":
         root.filename = filedialog.askopenfilename(
-            title="select song", filetypes=(("mp3 files", "*.mp3"), ("all", "*"))
+            title="select song", filetypes=(("audio files", "*.mp3 *.wav *.flac"), ("all", "*"))
         )
-    songs_paths = songs.check_path(root.filename)
-    print(songs.analyze_songs(songs_paths))
+    if root.filename != "":
+        songs_paths = songs.check_path(root.filename)
+        print(songs.analyze_songs(songs_paths))
 
 
-directory_button = tk.Button(text="Select Songs Directory", command=lambda: open_files("dir"), )
-file_button = tk.Button(text="Select a Song", command=lambda: open_files("file"))
+directory_button = tk.Button(text="Select Songs Directory", command=lambda: get_filepath("dir"), )
+file_button = tk.Button(text="Select a Song", command=lambda: get_filepath("file"))
 directory_button.pack()
 file_button.pack()
 
