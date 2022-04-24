@@ -36,7 +36,6 @@ class AudioChecker:
             expected_max_freq = val
         if frequency > expected_max_freq:
             is_valid = True
-            # return f"{filename} seems good [{bitrate} kbps]."
         return Song(pathlib.Path(
                 filename).stem, filename, is_valid, bitrate, f"{frequency:.0f}"
             )
