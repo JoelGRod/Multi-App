@@ -2,19 +2,19 @@ import pathlib
 from sound_analyzer.main.domain.audio_checker import AudioChecker
 from sound_analyzer.main.domain.song import Song
 
-def check_path(path: str) -> list[str]:
+def find_songs(path: str) -> list[str]:
     path = pathlib.Path(path)
-    song_paths = []
-    if(path.is_file()):
-        song_paths.append(str(path))
-    if(path.is_dir()):
-        for p in path.glob("**/*"):
-            if p.suffix in [".mp3", ".wav", ".flac"]:
-                song_paths.append(p)
-    return song_paths
+    if(path.is_file()): return [path]
+    elif(path.is_dir()): return list(filter(
+        lambda path: path.suffix in [".mp3", ".wav", ".flac"], 
+        path.glob("**/*")
+    ))
+    return []
 
-def analyze_songs(song_paths: list[str], **kwargs) -> list[Song]:
+def analyze_songs(path: str, **kwargs) -> list[Song]:
+    song_paths = find_songs(path)
+    audio_checker = AudioChecker()
     return list(
-        map(lambda song_path: AudioChecker.check_file(song_path, **kwargs),
+        map(lambda song_path: audio_checker.check_file(song_path, **kwargs),
         song_paths
     ))

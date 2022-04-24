@@ -16,8 +16,8 @@ def get_filepath(selection: str):
             title="select song", filetypes=(("audio files", "*.mp3 *.wav *.flac"), ("all", "*"))
         )
     if root.filename != "":
-        songs_paths = songs.check_path(root.filename)
-        print(songs.analyze_songs(songs_paths))
+        songs_paths = songs.analyze_songs(root.filename)
+        print(songs_paths)
 
 
 directory_button = tk.Button(text="Select Songs Directory", command=lambda: get_filepath("dir"), )
