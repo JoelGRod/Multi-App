@@ -2,3 +2,4 @@ numpy
 pydub
 scipy
 mutagen
+apafy

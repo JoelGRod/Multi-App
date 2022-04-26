@@ -18,15 +18,15 @@ class AudioChecker:
                 320: 18000,
     }
 
-    def get_result(self, filename, frequency):
+    def _get_result(self, filename, frequency) -> Song:
         filename = pathlib.Path(filename)
         if filename.suffix in [".wav", ".flac"]:
-            return self.analyze_uncompressed(filename, frequency)          
+            return self._analyze_uncompressed(filename, frequency)          
         elif filename.suffix == ".mp3":
-            return self.analyze_compressed(filename, frequency)
+            return self._analyze_compressed(filename, frequency)
         return f"Don't know what to expect for {filename}."
 
-    def analyze_compressed(self, filename, frequency):
+    def _analyze_compressed(self, filename, frequency) -> Song:
         mp3_file = MP3(filename)
         bitrate = int(mp3_file.info.bitrate / 1000)
         is_valid = False
@@ -40,14 +40,14 @@ class AudioChecker:
                 filename).stem, filename, is_valid, bitrate, f"{frequency:.0f}"
             )
 
-    def analyze_uncompressed(self, filename, frequency):
+    def _analyze_uncompressed(self, filename, frequency) -> Song:
         is_valid = False
         if frequency > 19000: is_valid = True
         return Song(pathlib.Path(
                 filename).stem, filename, is_valid, 19000, f"{frequency:.0f}"
             )
 
-    def check_file(self, filename, window_length_s: float = 0.05, channel: int = 0):
+    def check_file(self, filename, window_length_s: float = 0.05, channel: int = 0) -> Song:
         track = AudioSegment.from_file(filename)
 
         assert track.channels is not None
@@ -75,7 +75,7 @@ class AudioChecker:
         k = numpy.where(count > log_Sxx.shape[1] / 8)[0][-1]
 
         # What do we expect?
-        return self.get_result(filename, f[k])
+        return self._get_result(filename, f[k])
         
 
 
