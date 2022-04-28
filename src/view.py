@@ -3,10 +3,12 @@ import tkinter as tk
 from tkinter import ttk
 
 import router.routes as routes
+from config.styles import Styles
 
 class tkinterApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
+        Styles(self)
         self.frames = self.create_frames(
             self.create_container(), 
             routes.page_values
@@ -19,8 +21,6 @@ class tkinterApp(tk.Tk):
             "Sound Analyzer", 
             routes.page_frames
         )
-        style = ttk.Style(self)
-        style.theme_use('clam')
     
     def create_ui(self, page_names, page_frames):
         value = tk.StringVar()

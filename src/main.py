@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from config.styles import Styles
+
 def main():
     import view
     
