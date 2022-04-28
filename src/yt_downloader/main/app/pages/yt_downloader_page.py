@@ -3,18 +3,19 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
 
-import apafy
+from yt_downloader.main.infrastructure.api.youtube_api import YoutubeApi
 
 LARGEFONT =("Verdana", 35)
 
 class YoutubeDownloaderHome(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        self.yt_downloader = YoutubeApi.get_youtube_downloader()
         self.download_folder = tk.StringVar(value = "./")
         self.video_url = tk.StringVar()
         self.video = None
         self.progressbar = None
-    
+        
         self.create_template()
     
     # Template
@@ -76,8 +77,10 @@ class YoutubeDownloaderHome(tk.Frame):
             buttons_frame, text="Get Audio", 
             command = lambda: self.download("audio"))
         download_audio_button.grid(row = 0, column = 1, padx = 10, sticky = "w")
-        # TODO
-        self.progressbar = ttk.Progressbar(buttons_frame, length = 200)
+        self.progressbar = ttk.Progressbar(
+            buttons_frame,
+            length = 200, 
+            mode = "determinate")
         self.progressbar.grid(row = 0, column = 2, padx = 10, sticky = "w")
     
 
@@ -93,7 +96,7 @@ class YoutubeDownloaderHome(tk.Frame):
 
     def get_video(self) -> None:
         try:
-            self.video = apafy.new(self.video_url.get())
+            self.video = self.yt_downloader.new(self.video_url.get())
             self.show_video_info()
             self.show_download_buttons()
         except ValueError:
@@ -114,10 +117,9 @@ class YoutubeDownloaderHome(tk.Frame):
         # print("Size is %s" % stream.get_filesize())
         stream.download(
             filepath = self.download_folder.get(), 
-            quiet = False,
+            quiet = True,
             callback = self.download_status)  # starts download
     
-    # TODO
     def download_status(self, total, recvd, ratio, rate, eta):
-        if(int(recvd) == 0): self.progressbar.configure(maximum=total)
-        else: self.progressbar.step(int(recvd) * 100)
+        self.progressbar['value'] = int(ratio * 100)
+        self.update()

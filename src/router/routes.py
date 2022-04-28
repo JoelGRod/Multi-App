@@ -7,6 +7,6 @@ page_frames = {
     "YouTube Downloader": YoutubeDownloaderHome
 }
 
-page_names = list(page_frames.keys())
+page_names = ['Options'] + list(page_frames.keys())
 
 page_values = tuple(page_frames.values())

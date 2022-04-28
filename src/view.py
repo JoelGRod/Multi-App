@@ -1,5 +1,6 @@
 # Main view here
 import tkinter as tk
+from tkinter import ttk
 
 import router.routes as routes
 
@@ -15,22 +16,24 @@ class tkinterApp(tk.Tk):
             routes.page_frames
         )
         self.show_frame(
-            "YouTube Downloader", 
+            "Sound Analyzer", 
             routes.page_frames
         )
+        style = ttk.Style(self)
+        style.theme_use('clam')
     
     def create_ui(self, page_names, page_frames):
         value = tk.StringVar()
         value.set(page_names[0])
-        drop = tk.OptionMenu(
+        drop = ttk.OptionMenu(
             self, 
             value, 
-            *page_names, 
+            *page_names,
             command=lambda _: self.show_frame(value.get(), page_frames))
         drop.pack()
     
     def create_container(self):
-        container = tk.Frame(self) 
+        container = ttk.Frame(self) 
         container.pack(side = "bottom", fill = "both", expand = True)
         container.grid_rowconfigure(0, weight = 1)
         container.grid_columnconfigure(0, weight = 1)
