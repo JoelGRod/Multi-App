@@ -64,7 +64,7 @@ class Styles:
                 width = "18", 
                 # compound = tk.LEFT,
                 # image = "", 
-                # justify = tk.LEFT, 
+                # justify = tk.RIGHT, 
                 # underline = 10, 
                 # space = "100", 
                 # text = "100", 
@@ -105,6 +105,18 @@ class Styles:
         )
         # Label
         self.style.configure(
+            "title.TLabel",
+            font = (
+                    "Comic Sans MS", 
+                    25, 
+                    "normal", 
+                    "roman", 
+                    # "underline", 
+                    # "overstrike"
+                ),
+
+        )
+        self.style.configure(
             "TLabel", 
             # Padding
                 padding = ("10", "10"), 
@@ -123,7 +135,7 @@ class Styles:
                     # "overstrike"
                 ), 
                 anchor = "w",
-                width = "30", 
+                # width = "30", 
                 # compound = tk.LEFT,
                 # image = "", 
                 # justify = tk.LEFT, 

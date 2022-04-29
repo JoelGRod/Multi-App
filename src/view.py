@@ -29,22 +29,22 @@ class tkinterApp(tk.Tk):
         # navbar_frame.grid(row = 0, column = 0, sticky = "e")
         value = tk.StringVar()
         value.set(page_names[0])
-        app_title_label = ttk.Label(navbar_frame, text = "Multi App")
-        app_title_label.grid(row = 0, column = 0)
+        app_title_label = ttk.Label(navbar_frame, text = "Multi App", style = "title.TLabel")
+        app_title_label.grid(row = 0, column = 0, sticky = "nesw")
         drop = ttk.OptionMenu(
             navbar_frame, 
             value, 
             *page_names,
-            direction = "left",
+            direction = "flush",
             command=lambda _: self.show_frame(value.get(), page_frames))
-        drop.grid(row = 0, column = 1)
+        drop.grid(row = 0, column = 1, sticky = "nesw")
         exit_button = ttk.Button(
             navbar_frame, 
             text = "Exit", 
             command = self.quit)
-        exit_button.grid(row = 0, column = 2)
-        navbar_frame.columnconfigure(0, weight = 2)
-        navbar_frame.columnconfigure(1, weight = 1)
+        exit_button.grid(row = 0, column = 2, sticky = "nesw")
+        navbar_frame.columnconfigure(0, weight = 9)
+        navbar_frame.columnconfigure(1, weight = 2)
         navbar_frame.columnconfigure(2, weight = 1)
     
     def create_container(self):
