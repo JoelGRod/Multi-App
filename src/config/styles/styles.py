@@ -13,14 +13,14 @@ class Styles:
         colors = {
             "black": "#3b4446",
             "white": "#eff2f3",
-            "grey_light_one": "#aeb6b8",
-            "grey_light_two": "#d7dcdd",
-            "grey_dark_one": "#7b868a",
-            "grey_dark_two": "#525e61",
-            "grey_dark_three": "#7b868a",
+            "grey_light_1": "#aeb6b8",
+            "grey_light_2": "#d7dcdd",
+            "grey_dark_1": "#7b868a",
+            "grey_dark_2": "#525e61",
+            "grey_dark_3": "#7b868a",
             "blue": "#166a8f",
-            "green_one": "#2dbe60",
-            "green_two": "#2facb2",
+            "green_1": "#2dbe60",
+            "green_2": "#2facb2",
         }
 
         # Fonts (This does not work with ttk)
@@ -49,8 +49,8 @@ class Styles:
                 # relief = "10"
                 # shiftrelief = "10", # Line Down
             # Label
-                foreground = colors["black"],
-                background = colors["white"],
+                foreground = colors["white"],
+                background = colors["black"],
                 borderwidth = 0,
                 font = (
                     "Comic Sans MS", 
@@ -80,8 +80,8 @@ class Styles:
                 # relief = "10"
                 # shiftrelief = "10", # Line Down
             # Label
-                foreground = colors["black"],
-                background = colors["white"],
+                foreground = colors["white"],
+                background = colors["black"],
                 borderwidth = 0,
                 font = (
                     "Comic Sans MS", 
@@ -91,8 +91,8 @@ class Styles:
                     # "underline", 
                     # "overstrike"
                 ), 
-                anchor = "center",
-                width = "5", 
+                anchor = "c",
+                # width = "5", 
                 # compound = tk.LEFT,
                 # image = "", 
                 # justify = tk.LEFT, 
@@ -154,24 +154,24 @@ class Styles:
             foreground =        [('disabled', colors["black"]),
                                 ('pressed', colors["blue"]),
                                 ('active', colors["blue"])],
-            background =        [('disabled', colors["grey_light_one"]),
+            background =        [('disabled', colors["grey_light_1"]),
                                 ('pressed', '!focus', colors["white"]),
                                 ('active', colors["white"])],
-            highlightcolor =    [('focus', colors["green_one"]),
-                                ('!focus', colors["green_one"])],
-            relief =            [('pressed', colors["green_one"]),
-                                ('!pressed', colors["green_one"])]
+            highlightcolor =    [('focus', colors["green_1"]),
+                                ('!focus', colors["green_1"])],
+            relief =            [('pressed', colors["green_1"]),
+                                ('!pressed', colors["green_1"])]
         )
         self.style.map(
             'TButton',
             foreground =        [('disabled', colors["black"]),
                                 ('pressed', colors["blue"]),
                                 ('active', colors["blue"])],
-            background =        [('disabled', colors["grey_light_one"]),
+            background =        [('disabled', colors["grey_light_1"]),
                                 ('pressed', '!focus', colors["white"]),
                                 ('active', colors["white"])],
-            highlightcolor =    [('focus', colors["green_one"]),
-                                ('!focus', colors["green_one"])],
-            relief =            [('pressed', colors["green_one"]),
-                                ('!pressed', colors["green_one"])]
+            highlightcolor =    [('focus', colors["green_1"]),
+                                ('!focus', colors["green_1"])],
+            relief =            [('pressed', colors["green_1"]),
+                                ('!pressed', colors["green_1"])]
         )
