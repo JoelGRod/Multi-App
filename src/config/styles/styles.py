@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import tkinter.font as tkFont
 
+
 class Styles:
     def __init__(self, root) -> None:
         self.style = ttk.Style(root)
@@ -25,153 +26,139 @@ class Styles:
 
         # Fonts (This does not work with ttk)
         # comic_sans = tkFont.Font(
-        #     family = "Comic Sans MS", 
-        #     size = 16, 
-        #     weight = "bold", 
+        #     family = "Comic Sans MS",
+        #     size = 16,
+        #     weight = "bold",
         #     slant = "roman",
         #     underline = "10",
         #     overstrike = "10"
         # )
+        arial = (
+            "Arial",
+            16,
+            "normal",
+            "roman",
+            # "underline",
+            # "overstrike"
+        )
 
         # Widgets
         # Frame
         self.style.configure(
             "TFrame",
-            background = colors["black"],
+            background=colors["black"],
             # borderwidth = "",
             # relief = ""
         )
         # Option Menu
         self.style.configure(
-            "TMenubutton", 
+            "TMenubutton",
             # Padding
-                padding = ("10", "10"), 
-                # relief = "10"
-                # shiftrelief = "10", # Line Down
+            padding=("10", "10"),
+            # relief = "10"
+            # shiftrelief = "10", # Line Down
             # Label
-                foreground = colors["white"],
-                background = colors["black"],
-                borderwidth = 0,
-                font = (
-                    "Comic Sans MS", 
-                    16, 
-                    "normal", 
-                    "roman", 
-                    # "underline", 
-                    # "overstrike"
-                ), 
-                anchor = "e",
-                width = "18", 
-                # compound = tk.LEFT,
-                # image = "", 
-                # justify = tk.RIGHT, 
-                # underline = 10, 
-                # space = "100", 
-                # text = "100", 
-                # wraplength = "100", 
-                # embossed = "10", 
-                # stipple = "50",
+            foreground=colors["white"],
+            background=colors["black"],
+            borderwidth=0,
+            font=arial,
+            anchor="e",
+            width="18",
+            # compound = tk.LEFT,
+            # image = "",
+            # justify = tk.RIGHT,
+            # underline = 10,
+            # space = "100",
+            # text = "100",
+            # wraplength = "100",
+            # embossed = "10",
+            # stipple = "50",
         )
         # Button
         self.style.configure(
-            "TButton", 
+            "TButton",
             # Padding
-                padding = ("10", "10"), 
-                # relief = "10"
-                # shiftrelief = "10", # Line Down
+            padding=("10", "10"),
+            # relief = "10"
+            # shiftrelief = "10", # Line Down
             # Label
-                foreground = colors["white"],
-                background = colors["black"],
-                borderwidth = 0,
-                font = (
-                    "Comic Sans MS", 
-                    16, 
-                    "normal", 
-                    "roman", 
-                    # "underline", 
-                    # "overstrike"
-                ), 
-                anchor = "c",
-                # width = "5", 
-                # compound = tk.LEFT,
-                # image = "", 
-                # justify = tk.LEFT, 
-                # underline = 10, 
-                # space = "100", 
-                # text = "100", 
-                # wraplength = "100", 
-                # embossed = "10", 
-                # stipple = "50",
+            foreground=colors["white"],
+            background=colors["black"],
+            borderwidth=0,
+            font=arial,
+            anchor="c",
+            # width = "5",
+            # compound = tk.LEFT,
+            # image = "",
+            # justify = tk.LEFT,
+            # underline = 10,
+            # space = "100",
+            # text = "100",
+            # wraplength = "100",
+            # embossed = "10",
+            # stipple = "50",
         )
         # Label
         self.style.configure(
             "title.TLabel",
-            font = (
-                    "Comic Sans MS", 
-                    25, 
-                    "normal", 
-                    "roman", 
-                    # "underline", 
-                    # "overstrike"
-                ),
+            font=(
+                "Arial",
+                25,
+                "normal",
+                "roman",
+                # "underline",
+                # "overstrike"
+            ),
 
         )
         self.style.configure(
-            "TLabel", 
+            "TLabel",
             # Padding
-                padding = ("10", "10"), 
-                # relief = "10"
-                # shiftrelief = "10", # Line Down
+            padding=("10", "10"),
+            # relief = "10"
+            # shiftrelief = "10", # Line Down
             # Label
-                foreground = colors["white"],
-                background = colors["black"],
-                borderwidth = 0,
-                font = (
-                    "Comic Sans MS", 
-                    16, 
-                    "normal", 
-                    "roman", 
-                    # "underline", 
-                    # "overstrike"
-                ), 
-                anchor = "w",
-                # width = "30", 
-                # compound = tk.LEFT,
-                # image = "", 
-                # justify = tk.LEFT, 
-                # underline = 10, 
-                # space = "100", 
-                # text = "100", 
-                # wraplength = "100", 
-                # embossed = "10", 
-                # stipple = "50",
+            foreground=colors["white"],
+            background=colors["black"],
+            borderwidth=0,
+            font=arial,
+            anchor="w",
+            # width = "30",
+            # compound = tk.LEFT,
+            # image = "",
+            # justify = tk.LEFT,
+            # underline = 10,
+            # space = "100",
+            # text = "100",
+            # wraplength = "100",
+            # embossed = "10",
+            # stipple = "50",
         )
-        
 
         # Events
         self.style.map(
             'TMenubutton',
-            foreground =        [('disabled', colors["black"]),
-                                ('pressed', colors["blue"]),
-                                ('active', colors["blue"])],
-            background =        [('disabled', colors["grey_light_1"]),
-                                ('pressed', '!focus', colors["white"]),
-                                ('active', colors["white"])],
-            highlightcolor =    [('focus', colors["green_1"]),
-                                ('!focus', colors["green_1"])],
-            relief =            [('pressed', colors["green_1"]),
-                                ('!pressed', colors["green_1"])]
+            foreground=[('disabled', colors["black"]),
+                        ('pressed', colors["blue"]),
+                        ('active', colors["blue"])],
+            background=[('disabled', colors["grey_light_1"]),
+                        ('pressed', '!focus', colors["white"]),
+                        ('active', colors["white"])],
+            highlightcolor=[('focus', colors["green_1"]),
+                            ('!focus', colors["green_1"])],
+            relief=[('pressed', colors["green_1"]),
+                    ('!pressed', colors["green_1"])]
         )
         self.style.map(
             'TButton',
-            foreground =        [('disabled', colors["black"]),
-                                ('pressed', colors["blue"]),
-                                ('active', colors["blue"])],
-            background =        [('disabled', colors["grey_light_1"]),
-                                ('pressed', '!focus', colors["white"]),
-                                ('active', colors["white"])],
-            highlightcolor =    [('focus', colors["green_1"]),
-                                ('!focus', colors["green_1"])],
-            relief =            [('pressed', colors["green_1"]),
-                                ('!pressed', colors["green_1"])]
+            foreground=[('disabled', colors["black"]),
+                        ('pressed', colors["blue"]),
+                        ('active', colors["blue"])],
+            background=[('disabled', colors["grey_light_1"]),
+                        ('pressed', '!focus', colors["white"]),
+                        ('active', colors["white"])],
+            highlightcolor=[('focus', colors["green_1"]),
+                            ('!focus', colors["green_1"])],
+            relief=[('pressed', colors["green_1"]),
+                    ('!pressed', colors["green_1"])]
         )

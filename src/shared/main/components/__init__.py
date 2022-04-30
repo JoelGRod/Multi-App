@@ -1,0 +1,1 @@
+from shared.main.components.navbar import NavBar

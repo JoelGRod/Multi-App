@@ -1,9 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-LARGEFONT =("Verdana", 35)
 
-# Delete
 class NavBar(ttk.Frame):
     def __init__(self, parent, controller, page_names, page_frames):
         ttk.Frame.__init__(self, parent)

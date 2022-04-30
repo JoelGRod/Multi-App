@@ -10,3 +10,11 @@ page_frames = {
 page_names = ['Options'] + list(page_frames.keys())
 
 page_values = tuple(page_frames.values())
+
+def create_frames(container, controller):
+    frames = {}
+    for F in page_values:
+        frame = F(container, controller)
+        frames[F] = frame
+        frame.grid(row = 0, column = 0, sticky ="nsew")
+    return frames
