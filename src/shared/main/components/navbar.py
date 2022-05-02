@@ -12,7 +12,7 @@ class NavBar(ttk.Frame):
             text = "Multi App", 
             style = "title.TLabel"
         )
-        app_title_label.grid(row = 0, column = 0, sticky = "nesw")
+        app_title_label.grid(row = 0, column = 0, sticky = "w")
         drop = ttk.OptionMenu(
             self, 
             value, 

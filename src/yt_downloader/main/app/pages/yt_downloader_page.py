@@ -7,9 +7,9 @@ from yt_downloader.main.infrastructure.api.youtube_api import YoutubeApi
 
 LARGEFONT =("Verdana", 35)
 
-class YoutubeDownloaderHome(tk.Frame):
+class YoutubeDownloaderHome(ttk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+        ttk.Frame.__init__(self, parent)
         self.yt_downloader = YoutubeApi.get_youtube_downloader()
         self.download_folder = tk.StringVar(value = "./")
         self.video_url = tk.StringVar()
@@ -20,60 +20,54 @@ class YoutubeDownloaderHome(tk.Frame):
     
     # Template
     def create_template(self):
-        title_frame = tk.Frame(self, padx = 10, pady = 10)
-        title_frame.grid(row = 0, column = 0, sticky = "w")
-        dl_frame = tk.Frame(self, padx = 10, pady = 10)
+        dl_frame = ttk.Frame(self, padding = ("10", "10"))
         dl_frame.grid(row = 1, column = 0, sticky = "w")
-
-        # Title frame
-        label = tk.Label(title_frame, text ="Youtube Downloader", font = LARGEFONT)
-        label.grid(row = 0, column = 0)
 
         # Download Frame
         # Setting Download Folder
-        download_folder_label = tk.Label(dl_frame, textvariable = self.download_folder)
+        download_folder_label = ttk.Label(dl_frame, textvariable = self.download_folder)
         download_folder_label.grid(row = 0, column = 0, padx = 10, sticky = "w")
-        set_download_folder_button = tk.Button(
+        set_download_folder_button = ttk.Button(
             dl_frame, text = "Set Download Folder", 
             command = self.save_download_folder)
         set_download_folder_button.grid(row = 0, column = 1, padx = 10, sticky = "w")
 
         # Setting YouTube Video URL
-        video_url_entry = tk.Entry(dl_frame, width = 60)
+        video_url_entry = ttk.Entry(dl_frame, width = 60)
         video_url_entry.grid(row = 1, column = 0, padx = 10, pady = 10, sticky = "w")
-        set_video_url_button = tk.Button(
+        set_video_url_button = ttk.Button(
             dl_frame, text = "Set Video URL", 
             command = lambda: self.save_video_url(video_url_entry))
         set_video_url_button.grid(row = 1, column = 1, padx = 10, sticky = "w")
 
     def show_video_info(self):
-        info_frame = tk.Frame(self, padx = 10, pady = 10)
+        info_frame = ttk.Frame(self, padding = ("10", "10"))
         info_frame.grid(row = 2, column = 0, sticky = "w")
 
-        author_label = tk.Label(info_frame, text = "Author:")
+        author_label = ttk.Label(info_frame, text = "Author:")
         author_label.grid(row = 0, column = 0, padx = 10, sticky = "w")
-        author = tk.Label(info_frame, text = self.video.author)
+        author = ttk.Label(info_frame, text = self.video.author)
         author.grid(row = 0, column = 1, padx = 10, sticky = "w")
 
-        title_label = tk.Label(info_frame, text = "Title:")
+        title_label = ttk.Label(info_frame, text = "Title:")
         title_label.grid(row = 1, column = 0, padx = 10, sticky = "w")
-        title = tk.Label(info_frame, text = self.video.title)
+        title = ttk.Label(info_frame, text = self.video.title)
         title.grid(row = 1, column = 1, padx = 10, sticky = "w")
 
-        video_url_label = tk.Label(info_frame, text = "Url")
+        video_url_label = ttk.Label(info_frame, text = "Url")
         video_url_label.grid(row = 2, column = 0, padx = 10, sticky = "w")
-        video_url = tk.Label(info_frame, textvariable = self.video_url)
+        video_url = ttk.Label(info_frame, textvariable = self.video_url)
         video_url.grid(row = 2, column = 1, padx = 10, sticky = "w")
     
     def show_download_buttons(self):
-        buttons_frame = tk.Frame(self, padx = 10, pady = 10)
+        buttons_frame = ttk.Frame(self, padding = ("10", "10"))
         buttons_frame.grid(row = 3, column = 0, sticky = "w")
         # Download Resource
-        download_video_button = tk.Button(
+        download_video_button = ttk.Button(
             buttons_frame, text="Get Video", 
             command = lambda: self.download("video"))
         download_video_button.grid(row = 0, column = 0, padx = 10, sticky = "w")
-        download_audio_button = tk.Button(
+        download_audio_button = ttk.Button(
             buttons_frame, text="Get Audio", 
             command = lambda: self.download("audio"))
         download_audio_button.grid(row = 0, column = 1, padx = 10, sticky = "w")

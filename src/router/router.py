@@ -16,5 +16,5 @@ def create_frames(container, controller):
     for F in page_values:
         frame = F(container, controller)
         frames[F] = frame
-        frame.grid(row = 0, column = 0, sticky ="nsew")
+        frame.grid(row = 0, column = 0, sticky="nesw")
     return frames

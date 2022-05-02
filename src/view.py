@@ -25,13 +25,13 @@ class tkinterApp(tk.Tk):
         )
         Styles(self)
     
-    def create_navbar(self,container, page_names, page_frames):
+    def create_navbar(self, container, page_names, page_frames):
         navbar = NavBar(
             container, 
             self, 
             page_names, 
             page_frames)
-        navbar.grid(row = 0, column = 0, sticky = "nesw")
+        navbar.grid(row = 0, column = 0, sticky="nesw")
     
     def create_container(self, row, col):
         container = ttk.Frame(self, padding = ("10", "10"))
