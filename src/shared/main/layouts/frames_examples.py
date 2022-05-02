@@ -3,7 +3,10 @@ from tkinter import ttk
 
 LARGEFONT =("Verdana", 35)
 
-# Delete
+class ExampleFrame(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+
 class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
