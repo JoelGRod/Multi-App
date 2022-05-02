@@ -2,10 +2,9 @@ import tkinter as tk
 from tkinter import ttk
 
 
-class Results(tk.Frame):
+class Results(ttk.Frame):
     def __init__(self, parent, results):
-        tk.Frame.__init__(self, parent)
-        self.configure(background="red")
+        ttk.Frame.__init__(self, parent)
         self.results = results
         self.show_results()
     

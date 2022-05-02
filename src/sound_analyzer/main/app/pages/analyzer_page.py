@@ -1,3 +1,4 @@
+import tkinter as tk
 from tkinter import ttk
 
 # Components
@@ -7,9 +8,9 @@ import sound_analyzer.main.infrastructure.songs as songs
 
 
 class SoundAnalyzerHome(ttk.Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent, controller) -> None:
         ttk.Frame.__init__(self, parent)
-        Actions(self).grid(row = 0, column = 0, pady=10, sticky = "w")
+        Actions(self).grid(row = 0, column = 0, pady=10, sticky = "nesw")
 
     def get_results(self, filepath: str) -> None:
         song_results = songs.analyze_songs(filepath)

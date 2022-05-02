@@ -1,11 +1,10 @@
-import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
 
 
-class Actions(tk.Frame):
+class Actions(ttk.Frame):
     def __init__(self, parent):
-        tk.Frame.__init__(self, parent)
+        ttk.Frame.__init__(self, parent)
         self.parent = parent
 
         self.show_actions()
