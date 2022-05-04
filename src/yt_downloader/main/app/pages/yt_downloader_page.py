@@ -20,62 +20,53 @@ class YoutubeDownloaderHome(ttk.Frame):
     
     # Template
     def create_template(self):
-        dl_frame = ttk.Frame(self, padding = ("10", "10"))
-        dl_frame.grid(row = 1, column = 0, sticky = "w")
-
         # Download Frame
         # Setting Download Folder
-        download_folder_label = ttk.Label(dl_frame, textvariable = self.download_folder)
-        download_folder_label.grid(row = 0, column = 0, padx = 10, sticky = "w")
+        download_folder_label = ttk.Label(self, textvariable = self.download_folder)
+        download_folder_label.grid(row = 0, column = 0, sticky = "w")
         set_download_folder_button = ttk.Button(
-            dl_frame, text = "Set Download Folder", 
+            self, text = "Set Download Folder", 
             command = self.save_download_folder)
         set_download_folder_button.grid(row = 0, column = 1, padx = 10, sticky = "w")
 
         # Setting YouTube Video URL
-        video_url_entry = ttk.Entry(dl_frame, width = 60)
-        video_url_entry.grid(row = 1, column = 0, padx = 10, pady = 10, sticky = "w")
+        video_url_entry = ttk.Entry(self)
+        video_url_entry.grid(row = 1, column = 0, padx = 10, pady = 10, sticky = "nesw")
         set_video_url_button = ttk.Button(
-            dl_frame, text = "Set Video URL", 
+            self, text = "Set Video URL", 
             command = lambda: self.save_video_url(video_url_entry))
         set_video_url_button.grid(row = 1, column = 1, padx = 10, sticky = "w")
 
+        self.grid_columnconfigure(0, weight=4)
+        self.grid_columnconfigure(1, weight=1)
+
     def show_video_info(self):
-        info_frame = ttk.Frame(self, padding = ("10", "10"))
-        info_frame.grid(row = 2, column = 0, sticky = "w")
+        author_label = ttk.Label(self, text = f"Author: {self.video.author}")
+        author_label.grid(row = 2, column = 0, sticky = "w")
 
-        author_label = ttk.Label(info_frame, text = "Author:")
-        author_label.grid(row = 0, column = 0, padx = 10, sticky = "w")
-        author = ttk.Label(info_frame, text = self.video.author)
-        author.grid(row = 0, column = 1, padx = 10, sticky = "w")
+        title_label = ttk.Label(self, text = f"Title: {self.video.title}")
+        title_label.grid(row = 3, column = 0, sticky = "w")
 
-        title_label = ttk.Label(info_frame, text = "Title:")
-        title_label.grid(row = 1, column = 0, padx = 10, sticky = "w")
-        title = ttk.Label(info_frame, text = self.video.title)
-        title.grid(row = 1, column = 1, padx = 10, sticky = "w")
-
-        video_url_label = ttk.Label(info_frame, text = "Url")
-        video_url_label.grid(row = 2, column = 0, padx = 10, sticky = "w")
-        video_url = ttk.Label(info_frame, textvariable = self.video_url)
-        video_url.grid(row = 2, column = 1, padx = 10, sticky = "w")
+        video_url_label = ttk.Label(self, text = f"Url: {self.video_url.get()}")
+        video_url_label.grid(row = 4, column = 0, sticky = "w")
     
     def show_download_buttons(self):
         buttons_frame = ttk.Frame(self, padding = ("10", "10"))
-        buttons_frame.grid(row = 3, column = 0, sticky = "w")
+        buttons_frame.grid(row = 5, column = 0, sticky = "w")
         # Download Resource
         download_video_button = ttk.Button(
             buttons_frame, text="Get Video", 
             command = lambda: self.download("video"))
-        download_video_button.grid(row = 0, column = 0, padx = 10, sticky = "w")
+        download_video_button.grid(row = 0, column = 0, padx = 10)
         download_audio_button = ttk.Button(
             buttons_frame, text="Get Audio", 
             command = lambda: self.download("audio"))
-        download_audio_button.grid(row = 0, column = 1, padx = 10, sticky = "w")
+        download_audio_button.grid(row = 0, column = 1, padx = 10)
         self.progressbar = ttk.Progressbar(
             buttons_frame,
             length = 200, 
             mode = "determinate")
-        self.progressbar.grid(row = 0, column = 2, padx = 10, sticky = "w")
+        self.progressbar.grid(row = 0, column = 2, padx = 10)
     
 
     # Script

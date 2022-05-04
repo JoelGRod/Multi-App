@@ -5,7 +5,7 @@ from pathlib import Path
 
 class Results(ttk.Frame):
     def __init__(self, parent, results):
-        ttk.Frame.__init__(self, parent, style="blue.TFrame")
+        ttk.Frame.__init__(self, parent)
         self.results = results
         self.show_results()
     
