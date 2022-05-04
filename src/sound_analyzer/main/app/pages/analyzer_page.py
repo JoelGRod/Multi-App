@@ -15,5 +15,5 @@ class SoundAnalyzerHome(ttk.Frame):
 
     def get_results(self, filepath: str) -> None:
         song_results = songs.analyze_songs(filepath)
-        Results(self, song_results).grid(row = 1, column = 0, sticky="w")
+        Results(self, song_results).grid(row = 1, column = 0, sticky="nesw")
 
