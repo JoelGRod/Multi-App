@@ -10,7 +10,8 @@ import sound_analyzer.main.infrastructure.songs as songs
 class SoundAnalyzerHome(ttk.Frame):
     def __init__(self, parent, controller) -> None:
         ttk.Frame.__init__(self, parent)
-        Actions(self).grid(row = 0, column = 0, pady=10, sticky="e")
+        Actions(self).grid(row = 0, column = 0, pady=10, sticky="w")
+        self.grid_columnconfigure(0, weight = 1)
 
     def get_results(self, filepath: str) -> None:
         song_results = songs.analyze_songs(filepath)

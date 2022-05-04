@@ -50,6 +50,18 @@ class Styles:
             # borderwidth = "",
             # relief = ""
         )
+        self.style.configure(
+            "green.TFrame",
+            background=colors["green_1"],
+            # borderwidth = "",
+            # relief = ""
+        )
+        self.style.configure(
+            "blue.TFrame",
+            background=colors["blue"],
+            # borderwidth = "",
+            # relief = ""
+        )
         # Option Menu
         self.style.configure(
             "TMenubutton",
