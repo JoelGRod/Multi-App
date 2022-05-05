@@ -3,9 +3,12 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
 
+from urllib.request import urlopen
+
+from PIL import ImageTk
+
 from yt_downloader.main.infrastructure.api.youtube_api import YoutubeApi
 
-LARGEFONT =("Verdana", 35)
 
 class YoutubeDownloaderHome(ttk.Frame):
     def __init__(self, parent, controller):
@@ -19,7 +22,7 @@ class YoutubeDownloaderHome(ttk.Frame):
         self.create_template()
     
     # Template
-    def create_template(self):
+    def create_template(self) -> None:
         # Download Frame
         # Setting Download Folder
         download_folder_label = ttk.Label(self, textvariable = self.download_folder)
@@ -40,19 +43,31 @@ class YoutubeDownloaderHome(ttk.Frame):
         self.grid_columnconfigure(0, weight=4)
         self.grid_columnconfigure(1, weight=1)
 
-    def show_video_info(self):
+    def show_video_info(self, row: int) -> None:
         author_label = ttk.Label(self, text = f"Author: {self.video.author}")
-        author_label.grid(row = 2, column = 0, sticky = "w")
+        author_label.grid(row = row, column = 0, sticky = "w")
 
         title_label = ttk.Label(self, text = f"Title: {self.video.title}")
-        title_label.grid(row = 3, column = 0, sticky = "w")
+        title_label.grid(row = row + 1, column = 0, sticky = "w")
 
-        video_url_label = ttk.Label(self, text = f"Url: {self.video_url.get()}")
-        video_url_label.grid(row = 4, column = 0, sticky = "w")
+        duration_label = ttk.Label(self, text = f"Title: {self.video.duration}")
+        duration_label.grid(row = row + 2, column = 0, sticky = "w")
+
+        self.show_video_image(row + 3)
     
-    def show_download_buttons(self):
+    def show_video_image(self, row) -> None:
+        u = urlopen(self.video.thumb)
+        raw_data = u.read()
+        u.close()
+        thumbnail = ImageTk.PhotoImage(data=raw_data)
+        
+        image_label = ttk.Label(self, image = thumbnail)
+        image_label.image = thumbnail
+        image_label.grid(row = row, column = 0, sticky="w")
+    
+    def show_download_buttons(self) -> None:
         buttons_frame = ttk.Frame(self, padding = ("10", "10"))
-        buttons_frame.grid(row = 5, column = 0, sticky = "w")
+        buttons_frame.grid(row = 6, column = 0, sticky = "w")
         # Download Resource
         download_video_button = ttk.Button(
             buttons_frame, text="Get Video", 
@@ -82,7 +97,7 @@ class YoutubeDownloaderHome(ttk.Frame):
     def get_video(self) -> None:
         try:
             self.video = self.yt_downloader.new(self.video_url.get())
-            self.show_video_info()
+            self.show_video_info(row = 2)
             self.show_download_buttons()
         except ValueError:
             messagebox.showerror(title = "Error", message = "Invalid URL, Try Again")
@@ -105,6 +120,6 @@ class YoutubeDownloaderHome(ttk.Frame):
             quiet = True,
             callback = self.download_status)  # starts download
     
-    def download_status(self, total, recvd, ratio, rate, eta):
+    def download_status(self, total, recvd, ratio, rate, eta) -> None:
         self.progressbar['value'] = int(ratio * 100)
         self.update()
