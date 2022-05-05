@@ -3,3 +3,5 @@ pydub
 scipy
 mutagen
 apafy
+Pillow
+pyinstaller

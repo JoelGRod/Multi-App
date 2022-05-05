@@ -20,3 +20,6 @@ ffmpeg is required -> brew install ffmpeg
 * . ./scripts/w_args.sh
 * Execute the tests:
 * . ./scripts/test.sh
+
+# Build
+* pyinstaller --name Multi-App --onefile --noconsole ./src/main.py
