@@ -1,3 +1,0 @@
-([('Multi-App',
-   '/Users/da7kl3i4/Code/python/multi_app/dist/Multi-App',
-   'EXECUTABLE')],)

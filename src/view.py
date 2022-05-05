@@ -10,7 +10,6 @@ class tkinterApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
         self.geometry("800x600")
-        self.title("Multi App")
         self.create_navbar(
             self.create_container(0, 0),
             router.page_names, 

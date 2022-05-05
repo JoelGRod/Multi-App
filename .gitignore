@@ -2,3 +2,5 @@ secrets.py
 venv/
 __pycache__/
 .DS_STORE
+dist/
+build/
